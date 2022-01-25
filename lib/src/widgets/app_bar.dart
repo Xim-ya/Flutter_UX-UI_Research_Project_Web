@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux_research/src/utilities/break_points.dart';
 import 'package:ux_research/src/utilities/color.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -15,6 +16,8 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    print(MediaQuery.of(context).size.width);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +29,10 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
             elevation: 0,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[Icon(Icons.ac_unit_sharp), actionButtons()],
+              children: <Widget>[
+                Icon(Icons.ac_unit_sharp),
+                actionButtons(screenWidth)
+              ],
             ),
           ),
         ],
@@ -34,16 +40,26 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
     );
   }
 
-  // AppBar 우측 버튼 리스트
-  Row actionButtons() {
-    return Row(
-      children: [
-        actionButton("Home", tempFunc()),
-        actionButton("About", tempFunc()),
-        actionButton("Contact", tempFunc()),
-        SvgPicture.asset("icons/search_ic.svg")
-      ],
-    );
+  // AppBar 우측 버튼 리스트 , Desktop 레이아웃일 때 호출됨.
+  Widget actionButtons(double screenWidth) {
+    if (screenWidth > kDesktopBreakPoint) {
+      return Row(
+        children: [
+          actionButton("Home", tempFunc()),
+          actionButton("About", tempFunc()),
+          actionButton("Contact", tempFunc()),
+          IconButton(
+            icon: SvgPicture.asset("icons/search_ic.svg"),
+            onPressed: () {},
+          )
+        ],
+      );
+    } else {
+      return IconButton(
+        icon: SvgPicture.asset("icons/menu_bar_ic.svg"),
+        onPressed: () {},
+      );
+    }
   }
 
   // 우측 버튼
