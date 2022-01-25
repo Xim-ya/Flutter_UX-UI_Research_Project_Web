@@ -7,10 +7,12 @@ export 'dart:html';
 
 // Utilities
 export 'package:ux_research/src/utilities/break_points.dart';
+export 'package:ux_research/src/utilities/color.dart';
 
 // Widgets
 export 'package:ux_research/src/responsive/home_layout.dart';
 export 'package:ux_research/src/widgets/app_bar.dart';
+export 'package:ux_research/src/widgets/main_category.dart';
 
 // Screens
 export 'package:ux_research/src/screens/home/desktop/home_desktop.dart';

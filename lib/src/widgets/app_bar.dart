@@ -30,7 +30,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Icon(Icons.ac_unit_sharp),
+                Icon(Icons.ac_unit_sharp), // 임시 로고
                 actionButtons(screenWidth)
               ],
             ),

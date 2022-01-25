@@ -14,23 +14,29 @@ class HomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: HomeAppBar(),
-      body: LayoutBuilder(
-        builder: (context, dimensions) {
-          if (dimensions.maxWidth < kTabletBreakPoint) {
-            // 모바일 Widget을 리턴
-            return mobileBody;
-          } else if (dimensions.maxWidth >= kTabletBreakPoint &&
-              dimensions.maxWidth < kDesktopBreakPoint) {
-            // 태블릿 Widget을 리턴
-            return tabletBody ??
-                mobileBody; // tablet위젯이 null 이라면 모바일 Widget을 리턴
-          } else {
-            // DesktopWidget을 리턴
-            return desktopBody ??
-                mobileBody; // desktop 위젯이 null 이라면 모바일 Widget을 리턴
-          }
-        },
+      body: Column(
+        children: [
+          const SizedBox(height: 64),
+          LayoutBuilder(
+            builder: (context, dimensions) {
+              if (dimensions.maxWidth < kTabletBreakPoint) {
+                // 모바일 Widget을 리턴
+                return mobileBody;
+              } else if (dimensions.maxWidth >= kTabletBreakPoint &&
+                  dimensions.maxWidth < kDesktopBreakPoint) {
+                // 태블릿 Widget을 리턴
+                return tabletBody ??
+                    mobileBody; // tablet위젯이 null 이라면 모바일 Widget을 리턴
+              } else {
+                // DesktopWidget을 리턴
+                return desktopBody ??
+                    mobileBody; // desktop 위젯이 null 이라면 모바일 Widget을 리턴
+              }
+            },
+          ),
+        ],
       ),
     );
   }
