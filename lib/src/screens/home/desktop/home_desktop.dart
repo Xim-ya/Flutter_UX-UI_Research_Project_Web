@@ -11,29 +11,12 @@ class HomeScreenD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Category Leading Part
-          MainCategory(company: company, category: category),
-          MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              child: Icon(
-                Icons.add_comment,
-                size: 20,
-              ),
-              onTap: () {},
-            ),
-          ),
-          Text(
-            name,
-            style: TextStyle(
-                color: kDarkGrey, fontWeight: FontWeight.bold, fontSize: 30),
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        MainCategory(company: company, category: category), // 회사 & 서비스
+        ApplicationName(name: name) // 어플리케이션 이름
+      ],
     );
   }
 }
