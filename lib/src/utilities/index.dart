@@ -14,7 +14,7 @@ export 'package:ux_research/src/responsive/home_layout.dart';
 export 'package:ux_research/src/widgets/app_bar.dart';
 export 'package:ux_research/src/widgets/main_category.dart';
 export 'package:ux_research/src/widgets/on_hover_text.dart';
-export 'package:ux_research/src/widgets/ApplicationName.dart';
+export 'package:ux_research/src/widgets/application_name.dart';
 
 // Screens
 export 'package:ux_research/src/screens/home/desktop/home_desktop.dart';
