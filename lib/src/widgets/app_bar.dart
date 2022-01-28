@@ -4,6 +4,8 @@ import 'package:ux_research/src/utilities/break_points.dart';
 import 'package:ux_research/src/utilities/color.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
+  const HomeAppBar({Key? key}) : super(key: key);
+
   final double appBarHeight = 100.0;
 
   // Test Func
@@ -17,7 +19,6 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    print(MediaQuery.of(context).size.width);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +43,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
 
   // AppBar 우측 버튼 리스트 , Desktop 레이아웃일 때 호출됨.
   Widget actionButtons(double screenWidth) {
-    if (screenWidth > kDesktopBreakPoint) {
+    if (screenWidth > kAppBarBreakPoint) {
       return Row(
         children: [
           actionButton("Home", tempFunc()),

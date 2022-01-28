@@ -1,4 +1,4 @@
-import 'package:ux_research/src/responsive/home_layout.dart';
+import 'package:ux_research/src/screens/home/home.dart';
 
 import 'package:ux_research/src/utilities/index.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'UX UI RESEARCH',
         theme: ThemeData(fontFamily: 'SpoqaHanSansNeo'),
         home: const MaxWidthContainer(
-          child: HomeLayout(
-            mobileBody: HomeScreenM(),
-            tabletBody: HomeScreenT(),
-            desktopBody: HomeScreenD(),
-          ),
+          child: HomeScreen(),
         ));
   }
 }
