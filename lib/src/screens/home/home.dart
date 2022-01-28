@@ -23,6 +23,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _scrollController = ScrollController();
+
+    // Scroll Controller, 화면 끝까지 스크롤 되었을 시 더 많은 컨텐츠 리스트를 호출.
+    _scrollController.addListener(() {
+      if (_scrollController.position.atEdge) {
+        bool isBottom = _scrollController.position.pixels != 0;
+        if (isBottom) {
+          print("It is The End of Content, load more!");
+        }
+      }
+    });
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const HomeAppBar(),
@@ -30,6 +41,7 @@ class HomeScreen extends StatelessWidget {
         behavior: ScrollConfiguration.of(context)
             .copyWith(scrollbars: false), // 스크롤 바 숨기기
         child: SingleChildScrollView(
+          controller: _scrollController,
           child: Column(
             children: [
               const SizedBox(height: 64),

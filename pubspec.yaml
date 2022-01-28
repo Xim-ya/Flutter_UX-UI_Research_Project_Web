@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^1.0.3
   firebase_core: ^1.11.0
   responsive_sizer: ^3.0.5+1
+  collapsible_sidebar: ^2.0.1+2
 
 dev_dependencies:
   flutter_test:
