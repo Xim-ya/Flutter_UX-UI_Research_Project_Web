@@ -1,9 +1,8 @@
-/* 모든 imports 정리 index 폴더
- * 중복 import 방지 & Better Clean Code
- * */
+/* 모든 imports 정리 index 폴더(중복 import 방지) */
 
 // Packages
-export 'dart:html';
+// export 'dart:html';
+export 'package:responsive_sizer/responsive_sizer.dart';
 
 // Utilities
 export 'package:ux_research/src/utilities/break_points.dart';
@@ -15,5 +14,6 @@ export 'package:ux_research/src/widgets/app_bar.dart';
 export 'package:ux_research/src/widgets/main_category.dart';
 export 'package:ux_research/src/widgets/on_hover_text.dart';
 export 'package:ux_research/src/widgets/application_name.dart';
+export 'package:ux_research/src/widgets/max_width_container.dart';
 
 // Screens

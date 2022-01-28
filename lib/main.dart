@@ -1,8 +1,5 @@
-import 'package:ux_research/src/screens/home/home.dart';
-
 import 'package:ux_research/src/utilities/index.dart';
 import 'package:flutter/material.dart';
-import 'package:ux_research/src/widgets/max_width_container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +13,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'UX UI RESEARCH',
         theme: ThemeData(fontFamily: 'SpoqaHanSansNeo'),
-        home: const MaxWidthContainer(
-          child: HomeScreen(),
+        home: ResponsiveSizer(
+          builder: (BuildContext, Orientation, ScreenType) {
+            return const MaxWidthContainer(
+              child: HomeScreen(),
+            );
+          },
         ));
   }
 }

@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   firebase_core: ^1.11.0
-  hovering: ^1.0.4
+  responsive_sizer: ^3.0.5+1
 
 dev_dependencies:
   flutter_test:

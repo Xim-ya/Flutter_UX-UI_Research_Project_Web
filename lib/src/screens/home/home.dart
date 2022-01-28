@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ux_research/src/responsive/thumnail_contentList_layout.dart';
-import 'package:ux_research/src/screens/home/localWidget/content_ui_D.dart';
-import 'package:ux_research/src/screens/home/localWidget/content_ui_M.dart';
-import 'package:ux_research/src/screens/home/localWidget/content_ui_T.dart';
+import 'package:ux_research/src/screens/home/localWidget/thumbnail_list.dart';
+import 'package:ux_research/src/screens/home/localWidget/thumnail_logo.dart';
 import 'package:ux_research/src/utilities/index.dart';
 import 'package:ux_research/src/widgets/max_width_container.dart';
 
@@ -14,7 +13,6 @@ class HomeScreen extends StatelessWidget {
   final String company = "KaKao Entertainment Crop.";
   final String category = "Entertainment";
   final String name = "카카오 웹툰";
-
   static const List<String> imageList = [
     'images/tada_splash.png',
     'images/tada_home_01.png',
@@ -27,30 +25,55 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: HomeAppBar(),
-      body: Column(
-        children: [
-          const SizedBox(height: 64),
-          MaxWidthContainer(
-            // 마진 & Center Constraints Modifier 적용
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MainCategory(company: company, category: category), // 회사 & 서비스
-                ApplicationName(name: name), // 어플리케이션 이름
-                /* UI 스크린샷 콘텐츠 리스트
-                * Mobile < Tablet < Desktop 레이아웃으로 구분.
-                * */
-                const ThumbnailContentList(
-                  mobileBody: ContentUIM(),
-                  tabletBody: ContentUIT(),
-                  desktopBody: ContentUID(),
-                )
-              ],
-            ),
+      appBar: const HomeAppBar(),
+      body: ScrollConfiguration(
+        behavior: ScrollConfiguration.of(context)
+            .copyWith(scrollbars: false), // 스크롤 바 숨기기
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 64),
+              MaxWidthContainer(
+                child: ListView.separated(
+                    separatorBuilder: (_, __) => sectionDivider(),
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) => uiContent()),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
+
+  /* 아이템 섹션 */
+  Column uiContent() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        MainCategory(company: company, category: category), // 회사 & 서비스
+        ApplicationName(name: name), // 어플리케이션 이름
+        const SizedBox(height: _sizedHeight),
+        const ThumbnailContentList(
+          // 썸네일 컨텐츠 리스트
+          mobileBody: ThumbnailLogo(), // 모바일
+          desktopBody: ThumbnailList(), // 데스크탑
+        )
+      ],
+    );
+  }
+
+  /* 섹션 구분 위젯 */
+  Padding sectionDivider() {
+    return const Padding(
+      padding: EdgeInsets.only(top: _dividerPaddingT, bottom: _dividerPaddingB),
+      child: Divider(),
+    );
+  }
+
+  /* Styling */
+  static const double _dividerPaddingT = 72;
+  static const double _dividerPaddingB = 42;
+  static const double _sizedHeight = 40;
 }
