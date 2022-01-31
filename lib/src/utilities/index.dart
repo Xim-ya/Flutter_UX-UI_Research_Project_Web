@@ -20,5 +20,6 @@ export 'package:ux_research/src/screens/home/localWidget/thumnail_logo.dart';
 export 'package:ux_research/src/responsive/responsive_layout.dart';
 export 'package:ux_research/src/widgets/scroll_end_modifier.dart';
 export 'package:ux_research/src/screens/home/localWidget/main_option_buttons.dart';
+export 'package:ux_research/src/screens/home/localWidget/app_cotents.dart';
 
 // Screens
