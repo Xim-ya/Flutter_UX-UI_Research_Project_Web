@@ -15,5 +15,10 @@ export 'package:ux_research/src/widgets/main_category.dart';
 export 'package:ux_research/src/widgets/on_hover_text.dart';
 export 'package:ux_research/src/widgets/application_name.dart';
 export 'package:ux_research/src/widgets/max_width_container.dart';
+export 'package:ux_research/src/screens/home/localWidget/thumbnail_list.dart';
+export 'package:ux_research/src/screens/home/localWidget/thumnail_logo.dart';
+export 'package:ux_research/src/responsive/responsive_layout.dart';
+export 'package:ux_research/src/widgets/scroll_end_modifier.dart';
+export 'package:ux_research/src/screens/home/localWidget/main_option_buttons.dart';
 
 // Screens

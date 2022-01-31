@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
-class ThumbnailContentList extends StatelessWidget {
-  const ThumbnailContentList(
+class ResponsiveLayout extends StatelessWidget {
+  const ResponsiveLayout(
       {Key? key,
       required this.mobileBody,
       this.tabletBody,

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ux_research/src/responsive/thumnail_contentList_layout.dart';
-import 'package:ux_research/src/screens/home/localWidget/thumbnail_list.dart';
-import 'package:ux_research/src/screens/home/localWidget/thumnail_logo.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ux_research/src/utilities/index.dart';
-import 'package:ux_research/src/widgets/max_width_container.dart';
 
 /* Home Screen 반응형 레이아웃 빌더 */
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   // 임시 데이터.
@@ -23,40 +20,27 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _scrollController = ScrollController();
+    final _isBasicOption = useState(false); // Hook 도입 (간단한 state 관리)
+    final _isSelectedOptions = useState([true, false]);
 
-    // Scroll Controller, 화면 끝까지 스크롤 되었을 시 더 많은 컨텐츠 리스트를 호출.
-    _scrollController.addListener(() {
-      if (_scrollController.position.atEdge) {
-        bool isBottom = _scrollController.position.pixels != 0;
-        if (isBottom) {
-          print("It is The End of Content, load more!");
-        }
-      }
-    });
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: const HomeAppBar(),
-      body: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context)
-            .copyWith(scrollbars: false), // 스크롤 바 숨기기
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            children: [
-              const SizedBox(height: 64),
-              MaxWidthContainer(
-                child: ListView.separated(
+        backgroundColor: Colors.white,
+        appBar: const HomeAppBar(),
+        body: ScrollEndModifier(
+          // 스크롤 위젯 (화면 끝까지 스크롤 했을 시 특정 동작 수행)
+          child: MaxWidthContainer(
+            child: Column(
+              children: [
+                MainOptionButtons(isBasicOption: _isBasicOption),
+                ListView.separated(
                     separatorBuilder: (_, __) => sectionDivider(),
                     shrinkWrap: true,
                     itemCount: 5,
                     itemBuilder: (context, index) => uiContent()),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   /* 아이템 섹션 */
@@ -67,7 +51,7 @@ class HomeScreen extends StatelessWidget {
         MainCategory(company: company, category: category), // 회사 & 서비스
         ApplicationName(name: name), // 어플리케이션 이름
         const SizedBox(height: _sizedHeight),
-        const ThumbnailContentList(
+        const ResponsiveLayout(
           // 썸네일 컨텐츠 리스트
           mobileBody: ThumbnailLogo(), // 모바일
           desktopBody: ThumbnailList(), // 데스크탑
