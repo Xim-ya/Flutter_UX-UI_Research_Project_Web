@@ -21,26 +21,39 @@ class HomeScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _isBasicOption = useState(false); // Hook 도입 (간단한 state 관리)
-
+    final _isBasicOption = useState(true); // Hook 도입 (간단한 state 관리)
+    final GlobalKey<ScaffoldState> _key = GlobalKey();
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: const HomeAppBar(),
-        body: ScrollEndModifier(
-          // 스크롤 위젯 (화면 끝까지 스크롤 했을 시 특정 동작 수행)
-          child: MaxWidthContainer(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                MainOptionButtons(isBasicOption: _isBasicOption),
-                _isBasicOption.value
-                    ? Flexible(child: ScreenContents())
-                    : // 'Screen' 옵션이 선택 되었을 시,
-                    AppContents(
-                        company: company, category: category, name: name),
-              ],
-            ),
+      key: _key,
+      backgroundColor: Colors.white,
+      drawer: Drawer(
+        child: Container(
+          color: Colors.yellow,
+          child: Text("DRAWER"),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _key.currentState!.openDrawer(), // <-- Opens drawer
+      ),
+      appBar: const HomeAppBar(),
+      body: ScrollEndModifier(
+        // 스크롤 위젯 (화면 끝까지 스크롤 했을 시 특정 동작 수행)
+        child: MaxWidthContainer(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              MainOptionButtons(isBasicOption: _isBasicOption),
+              _isBasicOption.value
+                  ? Flexible(
+                      child: ScreenContents(
+                      imageList: imageList,
+                    ))
+                  : // 'Screen' 옵션이 선택 되었을 시,
+                  AppContents(company: company, category: category, name: name),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

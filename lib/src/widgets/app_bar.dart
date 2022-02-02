@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux_research/src/utilities/break_points.dart';
-import 'package:ux_research/src/utilities/color.dart';
+import 'package:ux_research/src/utilities/index.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    return Container(
+    return MaxWidthContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

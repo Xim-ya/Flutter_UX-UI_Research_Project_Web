@@ -10,16 +10,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'UX UI RESEARCH',
-        theme: ThemeData(fontFamily: 'SpoqaHanSansNeo'),
-        home: ResponsiveSizer(
-          builder: (BuildContext, Orientation, ScreenType) {
-            return const MaxWidthContainer(
-              child: HomeScreen(),
-            );
-          },
-        ));
+      debugShowCheckedModeBanner: false,
+      title: 'UX UI RESEARCH',
+      theme: ThemeData(fontFamily: 'SpoqaHanSansNeo'),
+      home: ResponsiveSizer(
+        builder: (BuildContext, Orientation, ScreenType) {
+          return HomeScreen();
+        },
+      ),
+    );
   }
 }
 

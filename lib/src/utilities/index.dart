@@ -3,6 +3,7 @@
 // Packages
 // export 'dart:html';
 export 'package:responsive_sizer/responsive_sizer.dart';
+export 'package:responsive_grid/responsive_grid.dart';
 
 // Utilities
 export 'package:ux_research/src/utilities/break_points.dart';
@@ -21,5 +22,7 @@ export 'package:ux_research/src/responsive/responsive_layout.dart';
 export 'package:ux_research/src/widgets/scroll_end_modifier.dart';
 export 'package:ux_research/src/screens/home/localWidget/main_option_buttons.dart';
 export 'package:ux_research/src/screens/home/localWidget/app_cotents.dart';
+export 'package:ux_research/src/widgets/on_hover_content.dart';
+export 'package:ux_research/src/widgets/ui_content.dart';
 
 // Screens
