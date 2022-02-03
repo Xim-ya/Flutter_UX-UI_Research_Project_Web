@@ -1,19 +1,21 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   const HomeAppBar({Key? key}) : super(key: key);
-
   final double appBarHeight = 100.0;
-
-  // Test Func
-  void tempFunc() {
-    print("TEST LOG");
-  }
 
   @override
   get preferredSize => Size.fromHeight(appBarHeight);
+
+  // Test Func
+  void tempFunc() {
+    if (kDebugMode) {
+      print("RENDERED");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
       margin: const EdgeInsets.only(right: 50),
       child: TextButton(
         onPressed: () {
-          print("Hello");
+          tempFunc;
         },
         child: Text(
           content,

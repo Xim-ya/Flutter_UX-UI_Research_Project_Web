@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ux_research/src/screens/home/localWidget/filter_drawer.dart';
 import 'package:ux_research/src/screens/home/localWidget/screen_contents.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
@@ -23,18 +24,16 @@ class HomeScreen extends HookWidget {
   Widget build(BuildContext context) {
     final _isBasicOption = useState(true); // Hook 도입 (간단한 state 관리)
     final GlobalKey<ScaffoldState> _key = GlobalKey();
+
     return Scaffold(
       key: _key,
       backgroundColor: Colors.white,
-      drawer: Drawer(
-        child: Container(
-          color: Colors.yellow,
-          child: Text("DRAWER"),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _key.currentState!.openDrawer(), // <-- Opens drawer
-      ),
+      drawer: FilterDrawer(),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        print("Drawer Opened");
+        _key.currentState!.openDrawer();
+      } // <-- Opens drawer
+          ),
       appBar: const HomeAppBar(),
       body: ScrollEndModifier(
         // 스크롤 위젯 (화면 끝까지 스크롤 했을 시 특정 동작 수행)

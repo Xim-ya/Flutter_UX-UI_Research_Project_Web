@@ -21,17 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class CenteredLayout extends StatelessWidget {
-//   const CenteredLayout({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: ConstrainedBox(
-//         constraints: BoxConstraints(maxWidth: 1316.0),
-//         child:
-//       ),
-//     );
-//   }
-// }
