@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux_research/src/utilities/color.dart';
 
 class FilterDrawer extends StatelessWidget {
   const FilterDrawer({Key? key}) : super(key: key);
@@ -33,12 +34,45 @@ class FilterDrawer extends StatelessWidget {
     ));
   }
 
-  Column leftBanner() {
-    return Column(
-      children: [
-        filterButton("icons/filter_ic.svg", filterAction),
-        filterButton("icons/menu_bar_ic.svg", filterAction),
-      ],
+  Container leftBanner() {
+    return Container(
+      decoration: BoxDecoration(
+          border:
+              Border(right: BorderSide(width: 1, color: kDrawerBorderColor))),
+      child: Column(
+        children: [
+          leadingBannerButton(),
+          bannerDivier(),
+          filterButton("icons/menu_bar_ic.svg", filterAction),
+          filterButton("icons/menu_bar_ic.svg", filterAction),
+          filterButton("icons/menu_bar_ic.svg", filterAction),
+        ],
+      ),
+    );
+  }
+
+  Container bannerDivier() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      width: 20,
+      height: 1,
+      color: kLightGrey,
+    );
+  }
+
+  Container leadingBannerButton() {
+    return Container(
+      margin: EdgeInsets.only(top: 12),
+      padding: EdgeInsets.all(8),
+      height: 36,
+      width: 36,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(width: 1, color: Colors.grey)),
+      child: SvgPicture.asset(
+        "icons/filter_ic.svg",
+        fit: BoxFit.cover,
+      ),
     );
   }
 
@@ -48,6 +82,7 @@ class FilterDrawer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          /* Outlined Button , with SVG */
           InkWell(
             borderRadius: BorderRadius.circular(8),
             onTap: () {
@@ -64,6 +99,17 @@ class FilterDrawer extends StatelessWidget {
                 svgLocation,
                 fit: BoxFit.cover,
               ),
+            ),
+          ),
+          /* Button Title */
+          Padding(
+            padding: const EdgeInsets.only(top: 4, bottom: 12),
+            child: Text(
+              "element",
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.black),
             ),
           ),
         ],
