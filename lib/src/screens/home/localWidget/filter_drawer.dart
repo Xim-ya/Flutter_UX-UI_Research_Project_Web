@@ -22,18 +22,30 @@ class FilterDrawer extends StatelessWidget {
         leftBanner(),
         /* Right */
         Expanded(
-          child: ListView.builder(
-            itemCount: 100,
-            itemBuilder: (context, index) => Text(
-              "Right",
-              style: TextStyle(fontSize: 20),
-            ),
+          child: Stack(
+            children: <Widget>[
+              ListView.builder(
+                padding: EdgeInsets.only(top: 62),
+                shrinkWrap: true,
+                itemCount: 100,
+                itemBuilder: (context, index) => Text(
+                  "Right",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Container(
+                height: 62,
+                color: Colors.red,
+                child: Center(child: Text("LEAD")),
+              ),
+            ],
           ),
         ),
       ],
     ));
   }
 
+  /* 필터 옵션 버튼의 리스트 위젯 */
   Container leftBanner() {
     return Container(
       decoration: BoxDecoration(
@@ -56,7 +68,7 @@ class FilterDrawer extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10),
       width: 20,
       height: 1,
-      color: kLightGrey,
+      color: kDrawerBorderColor,
     );
   }
 
