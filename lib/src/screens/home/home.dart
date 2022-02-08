@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:ux_research/src/screens/home/localWidget/filter_drawer.dart';
-import 'package:ux_research/src/screens/home/localWidget/screen_contents.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 /* Home Screen 반응형 레이아웃 빌더 */
@@ -30,10 +27,8 @@ class HomeScreen extends HookWidget {
       backgroundColor: Colors.white,
       drawer: FilterDrawer(),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        print("Drawer Opened");
         _key.currentState!.openDrawer();
-      } // <-- Opens drawer
-          ),
+      }),
       appBar: const HomeAppBar(),
       body: ScrollEndModifier(
         // 스크롤 위젯 (화면 끝까지 스크롤 했을 시 특정 동작 수행)
