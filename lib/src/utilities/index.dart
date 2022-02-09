@@ -28,6 +28,7 @@ export 'package:ux_research/src/widgets/on_hover_content.dart';
 export 'package:ux_research/src/widgets/ui_content.dart';
 export 'package:ux_research/src/screens/home/localWidget/screen_contents.dart';
 export 'package:ux_research/src/screens/home/localWidget/filter_drawer.dart';
+// export 'package:ux_research/src/screens/home/localWidget/search_filter_slider.dart';
 
 // Model & View Model
 export 'package:ux_research/src/model/screen_option_model.dart';

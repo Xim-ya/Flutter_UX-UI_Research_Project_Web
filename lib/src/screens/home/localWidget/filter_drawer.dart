@@ -6,9 +6,6 @@ class FilterDrawer extends StatelessWidget {
 
   final optionController =
       Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
-  void filterAction() {
-    optionController.filterListBasedOnType(0);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,21 +53,25 @@ class FilterDrawer extends StatelessWidget {
   Container listHeader() {
     return Container(
       height: 58,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         border: Border(
           bottom: BorderSide(width: 1, color: kDrawerBorderColor),
         ),
       ),
-      child: Center(
-          child: Text.rich(TextSpan(children: <TextSpan>[
-        TextSpan(
-            text: "Pattern",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        TextSpan(
-            text: " 옵션",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
-      ]))),
+      child: GetBuilder<ScreenOptionVM>(
+          init: optionController,
+          builder: (_) {
+            return Center(
+                child: Text.rich(TextSpan(children: <TextSpan>[
+              TextSpan(
+                  text: _.selectedType,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: " 옵션",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+            ])));
+          }),
     );
   }
 
@@ -84,9 +85,9 @@ class FilterDrawer extends StatelessWidget {
         children: [
           leadingBannerButton(),
           bannerDivier(),
-          filterButton("icons/menu_bar_ic.svg", filterAction, 0),
-          filterButton("icons/menu_bar_ic.svg", filterAction, 1),
-          filterButton("icons/menu_bar_ic.svg", filterAction, 2),
+          filterButton("icons/menu_bar_ic.svg", 0),
+          filterButton("icons/menu_bar_ic.svg", 1),
+          filterButton("icons/menu_bar_ic.svg", 2),
         ],
       ),
     );
@@ -117,8 +118,7 @@ class FilterDrawer extends StatelessWidget {
     );
   }
 
-  Container filterButton(
-      String svgLocation, void Function() filterAction, int optionType) {
+  Container filterButton(String svgLocation, int optionType) {
     return Container(
       width: 56,
       child: Column(
@@ -126,7 +126,7 @@ class FilterDrawer extends StatelessWidget {
         children: [
           /* Outlined Button , with SVG */
           GetBuilder<ScreenOptionVM>(
-              init: ScreenOptionVM(option: ScreenOptionModel()),
+              init: optionController,
               builder: (_) {
                 return InkWell(
                   borderRadius: BorderRadius.circular(8),

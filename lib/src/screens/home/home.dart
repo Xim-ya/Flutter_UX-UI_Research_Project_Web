@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
+import 'localWidget/search_filter_slider.dart';
+
 /* Home Screen 반응형 레이아웃 빌더 */
 class HomeScreen extends HookWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   // 임시 데이터.
   final String company = "KaKao Entertainment Crop.";
@@ -22,12 +24,16 @@ class HomeScreen extends HookWidget {
     final _isBasicOption = useState(true); // Hook 도입 (간단한 state 관리)
     final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+    void openDrawer() {
+      _key.currentState!.openDrawer();
+    }
+
     return Scaffold(
       key: _key,
       backgroundColor: Colors.white,
       drawer: FilterDrawer(),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        _key.currentState!.openDrawer();
+        openDrawer();
       }),
       appBar: const HomeAppBar(),
       body: ScrollEndModifier(
@@ -37,13 +43,17 @@ class HomeScreen extends HookWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               MainOptionButtons(isBasicOption: _isBasicOption),
-              _isBasicOption.value
-                  ? Flexible(
-                      child: ScreenContents(
-                      imageList: imageList,
-                    ))
-                  : // 'Screen' 옵션이 선택 되었을 시,
-                  AppContents(company: company, category: category, name: name),
+              /* Horizontal Option View , Add Option List Button */
+              SearchFilterSlider(openDrawer),
+              /* 임시 주석 처리 */
+              // _isBasicOption.value
+              //     ? Flexible(
+              //         child: ScreenContents(
+              //         imageList: imageList,
+              //       ))
+              //     : // 'Screen' 옵션이 선택 되었을 시,
+              //     AppContents(company: company, category: category, name: name),
+              /* ************** */
             ],
           ),
         ),
