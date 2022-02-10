@@ -9,8 +9,8 @@ class FilterDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final optionController =
-    //     Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
+    final optionController =
+        Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
     return Drawer(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
