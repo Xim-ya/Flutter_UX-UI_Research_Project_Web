@@ -18,16 +18,9 @@ class SearchFilterSlider extends StatelessWidget {
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 // 옵션 리스트 중 'selected' 프로퍼티가 true boolean 값을 가지고 있는 인스턴스만 리턴
-                itemCount: _.optionList
-                            .where((e) => e.selected == true)
-                            .toList()
-                            .length ==
-                        0
+                itemCount: _.selectedOptionList.isEmpty
                     ? 1
-                    : _.optionList
-                        .where((e) => e.selected == true)
-                        .toList()
-                        .length,
+                    : _.selectedOptionList.length,
                 itemBuilder: (ctx, index) {
                   if (index == 0) {
                     // 헤더 값 반환

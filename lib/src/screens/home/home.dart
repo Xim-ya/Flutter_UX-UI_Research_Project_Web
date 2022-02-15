@@ -46,13 +46,13 @@ class HomeScreen extends HookWidget {
               /* Horizontal Option View , Add Option List Button */
               SearchFilterSlider(openDrawer),
               /* 임시 주석 처리 */
-              // _isBasicOption.value
-              //     ? Flexible(
-              //         child: ScreenContents(
-              //         imageList: imageList,
-              //       ))
-              //     : // 'Screen' 옵션이 선택 되었을 시,
-              //     AppContents(company: company, category: category, name: name),
+              _isBasicOption.value
+                  ? Flexible(
+                      child: ScreenContents(
+                      imageList: imageList,
+                    ))
+                  : // 'Screen' 옵션이 선택 되었을 시,
+                  AppContents(company: company, category: category, name: name),
               /* ************** */
             ],
           ),

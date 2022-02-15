@@ -10,6 +10,10 @@ class ScreenOptionVM extends GetxController {
     return newOption.screenOptions;
   }
 
+  List<ScreenOption> get selectedOptionList {
+    return newOption.selectedScreenOptions;
+  }
+
   String get selectedType {
     switch (newOption.selectedType) {
       case 0:
@@ -23,12 +27,12 @@ class ScreenOptionVM extends GetxController {
     }
   }
 
+  void setOption(ScreenOption item) {
+    newOption.setOption(item);
+  }
+
   void filterListBasedOnType(int type) {
     newOption.filterListBasedOnType(type);
     update();
   }
-
-  // List<ScreenOption> get optionList {
-  //   return newOption.screenOptions;
-  // }
 }
