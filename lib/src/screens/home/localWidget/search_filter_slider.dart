@@ -4,7 +4,6 @@ import 'package:ux_research/src/utilities/index.dart';
 class SearchFilterSlider extends StatelessWidget {
   SearchFilterSlider(this.openDrawer, {Key? key}) : super(key: key);
   final openDrawer;
-
   final optionController =
       Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
 

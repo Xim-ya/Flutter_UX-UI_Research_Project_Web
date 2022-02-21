@@ -42,8 +42,9 @@ class HomeScreen extends HookWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              /* 'App' <---> 'Screen' 옵션 토글 버튼 리스트 */
               MainOptionButtons(isBasicOption: _isBasicOption),
-              /* Horizontal Option View , Add Option List Button */
+              /* 'Screen' Category 옵션 리스트 */
               SearchFilterSlider(openDrawer),
               /* 임시 주석 처리 */
               _isBasicOption.value

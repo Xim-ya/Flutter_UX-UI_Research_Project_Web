@@ -35,3 +35,4 @@ export 'package:ux_research/src/model/screen_option_model.dart';
 export 'package:ux_research/viewModel/screen_option_view_model.dart';
 
 // Screens
+export 'package:ux_research/src/screens/screen_category/screen_category_screen.dart';

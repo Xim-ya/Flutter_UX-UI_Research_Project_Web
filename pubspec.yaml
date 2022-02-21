@@ -41,6 +41,8 @@ dependencies:
   flutter_hooks: ^0.18.2
   responsive_grid: ^2.0.0
   get: ^4.6.1
+  fluro: ^2.0.3
+
 
 dev_dependencies:
   flutter_test:

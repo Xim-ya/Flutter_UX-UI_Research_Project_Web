@@ -1,6 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux_research/src/utilities/fluro_router.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -9,13 +8,6 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   get preferredSize => Size.fromHeight(appBarHeight);
-
-  // Test Func
-  void tempFunc() {
-    if (kDebugMode) {
-      print("RENDERED");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +24,12 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                ElevatedButton(
+                    onPressed: () {
+                      String nextPathArg = '/screen';
+                      FRouter.router.navigateTo(context, nextPathArg);
+                    },
+                    child: Text("aiim")),
                 Icon(Icons.ac_unit_sharp), // 임시 로고
                 actionButtons(screenWidth)
               ],
@@ -47,9 +45,10 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
     if (screenWidth > kAppBarBreakPoint) {
       return Row(
         children: [
-          actionButton("Home", tempFunc()),
-          actionButton("About", tempFunc()),
-          actionButton("Contact", tempFunc()),
+          actionButton("Home", ScreenCategoryScreen()),
+          actionButton("Screens", ScreenCategoryScreen()),
+          actionButton("About", ScreenCategoryScreen()),
+          actionButton("Contact", ScreenCategoryScreen()),
           IconButton(
             icon: SvgPicture.asset("icons/search_ic.svg"),
             onPressed: () {},
@@ -65,12 +64,12 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   // 우측 버튼
-  Container actionButton(String content, void tempFunc) {
+  Container actionButton(String content, Widget routeWidget) {
     return Container(
       margin: const EdgeInsets.only(right: 50),
       child: TextButton(
         onPressed: () {
-          tempFunc;
+          // print("Plesase c onsole ome")
         },
         child: Text(
           content,

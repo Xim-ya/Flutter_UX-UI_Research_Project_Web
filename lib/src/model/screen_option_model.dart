@@ -1,7 +1,6 @@
 import 'package:ux_research/src/utilities/index.dart';
 
 // 모든 스크린 옵션들의 데이터와 비즈니스 로직들을 관리
-
 class ScreenOptionModel {
   List<ScreenOption> screenOptions = screenOptionList;
   List<ScreenOption> selectedScreenOptions = [];
@@ -25,6 +24,8 @@ class ScreenOptionModel {
 class ScreenOption {
   String title;
   int type;
-  bool selected;
-  ScreenOption(this.title, this.type, this.selected);
+  ScreenOption(
+    this.title,
+    this.type,
+  );
 }
