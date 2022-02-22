@@ -4,7 +4,6 @@ import 'package:ux_research/src/utilities/index.dart';
 
 class ScreenCategoryScreen extends StatefulWidget {
   const ScreenCategoryScreen({Key? key}) : super(key: key);
-
   @override
   State<ScreenCategoryScreen> createState() => _ScreenCategoryScreenState();
 }
@@ -29,7 +28,7 @@ class _ScreenCategoryScreenState extends State<ScreenCategoryScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 /* 스크린 제목 (Indicator Text) */
-                SearchFilterSlider(openDrawer),
+                SelectOptionSlider(openDrawer),
                 ScreenContents(
                   imageList: imageList,
                 ),

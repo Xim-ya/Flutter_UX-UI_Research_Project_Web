@@ -10,8 +10,6 @@ class FilterDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final optionController =
-    //     Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
     return Drawer(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +42,7 @@ class FilterDrawer extends StatelessWidget {
                                 ),
                               ),
                               _.selectedOptionList.contains(_.optionList[index])
+                                  // 옵션이 선택되었다면 아이콘 위젯을 보여줌.
                                   ? Positioned(
                                       top: 0,
                                       bottom: 0,
@@ -102,9 +101,9 @@ class FilterDrawer extends StatelessWidget {
         children: [
           leadingBannerButton(),
           bannerDivier(),
-          filterButton("icons/menu_bar_ic.svg", 0),
-          filterButton("icons/menu_bar_ic.svg", 1),
-          filterButton("icons/menu_bar_ic.svg", 2),
+          filterButton("icons/pattern_big_ic.svg", 0, "pattern"),
+          filterButton("icons/element_big_ic.svg", 1, "element"),
+          filterButton("icons/category_big_ic.svg", 2, "category"),
         ],
       ),
     );
@@ -135,7 +134,7 @@ class FilterDrawer extends StatelessWidget {
     );
   }
 
-  Container filterButton(String svgLocation, int optionType) {
+  Container filterButton(String svgLocation, int optionType, String title) {
     return Container(
       width: 56,
       child: Column(
@@ -168,7 +167,7 @@ class FilterDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 4, bottom: 12),
             child: Text(
-              "element",
+              title,
               style: TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.w300,
