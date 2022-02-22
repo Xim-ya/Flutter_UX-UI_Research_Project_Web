@@ -1,4 +1,5 @@
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:ux_research/src/screens/temp_screen.dart';
 import 'package:ux_research/src/utilities/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ux_research/src/utilities/fluro_router.dart';
@@ -20,13 +21,13 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
-        '/screen': (context) => ScreenCategoryScreen(),
       },
-      // home: ResponsiveSizer(
-      //   builder: (BuildContext, Orientation, ScreenType) {
-      //     return HomeScreen();
-      //   },
-      // ),
     );
   }
 }
+
+// TODO :
+/*
+ 1. MainOptionToggleButton Widget 삭제
+ 2. SearchFilterSlider
+*/

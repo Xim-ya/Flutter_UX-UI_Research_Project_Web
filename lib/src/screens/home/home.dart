@@ -11,13 +11,6 @@ class HomeScreen extends HookWidget {
   final String company = "KaKao Entertainment Crop.";
   final String category = "Entertainment";
   final String name = "카카오 웹툰";
-  static const List<String> imageList = [
-    'images/tada_splash.png',
-    'images/tada_home_01.png',
-    'images/tada_others_01.png',
-    'images/tada_ride_01.png',
-    'images/tada_ride_05.png'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +24,7 @@ class HomeScreen extends HookWidget {
     return Scaffold(
       key: _key,
       backgroundColor: Colors.white,
-      drawer: FilterDrawer(),
+      // drawer: FilterDrawer(),
       floatingActionButton: FloatingActionButton(onPressed: () {
         openDrawer();
       }),
@@ -42,18 +35,18 @@ class HomeScreen extends HookWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              /* 'App' <---> 'Screen' 옵션 토글 버튼 리스트 */
-              MainOptionButtons(isBasicOption: _isBasicOption),
+              /* 'App' <---> 'Screen' 옵션 토글 버튼 리스트 (곧 삭제) */
+              // MainOptionButtons(isBasicOption: _isBasicOption),
               /* 'Screen' Category 옵션 리스트 */
-              SearchFilterSlider(openDrawer),
+              // SearchFilterSlider(openDrawer),
               /* 임시 주석 처리 */
-              _isBasicOption.value
-                  ? Flexible(
-                      child: ScreenContents(
-                      imageList: imageList,
-                    ))
-                  : // 'Screen' 옵션이 선택 되었을 시,
-                  AppContents(company: company, category: category, name: name),
+              // Flexible(
+              //    child: ScreenContents(
+              //      imageList: imageList,
+              //    ),
+              //  )
+              // 'Screen' 옵션이 선택 되었을 시,
+              AppContents(company: company, category: category, name: name),
               /* ************** */
             ],
           ),

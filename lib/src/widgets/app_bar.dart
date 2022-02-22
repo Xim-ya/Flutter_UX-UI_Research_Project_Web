@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ux_research/src/utilities/fluro_router.dart';
+import 'dart:html' as html;
 import 'package:ux_research/src/utilities/index.dart';
 
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -24,14 +24,8 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                ElevatedButton(
-                    onPressed: () {
-                      String nextPathArg = '/screen';
-                      FRouter.router.navigateTo(context, nextPathArg);
-                    },
-                    child: Text("aiim")),
                 Icon(Icons.ac_unit_sharp), // 임시 로고
-                actionButtons(screenWidth)
+                actionButtons(context, screenWidth)
               ],
             ),
           ),
@@ -41,14 +35,14 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   // AppBar 우측 버튼 리스트 , Desktop 레이아웃일 때 호출됨.
-  Widget actionButtons(double screenWidth) {
+  Widget actionButtons(BuildContext context, double screenWidth) {
     if (screenWidth > kAppBarBreakPoint) {
       return Row(
         children: [
-          actionButton("Home", ScreenCategoryScreen()),
-          actionButton("Screens", ScreenCategoryScreen()),
-          actionButton("About", ScreenCategoryScreen()),
-          actionButton("Contact", ScreenCategoryScreen()),
+          actionButton(context, "Home", '/'),
+          actionButton(context, "Screens", '/screen'),
+          actionButton(context, "About", '/about'),
+          actionButton(context, "Contact", 'temp'),
           IconButton(
             icon: SvgPicture.asset("icons/search_ic.svg"),
             onPressed: () {},
@@ -64,12 +58,20 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   // 우측 버튼
-  Container actionButton(String content, Widget routeWidget) {
+  Container actionButton(
+      BuildContext context, String content, String routeString) {
+    final currentRoute = ModalRoute.of(context)?.settings.name;
     return Container(
       margin: const EdgeInsets.only(right: 50),
       child: TextButton(
         onPressed: () {
-          // print("Plesase c onsole ome")
+          // 현재 설정된 Route Path로 이동하는 동작일 때 새로고침 동작을 메뉴얼하게 동작하게 함.
+          if (currentRoute == routeString) {
+            html.window.location.reload();
+          } else {
+            // 인자로 전달 받은 Route Path로 이동
+            FRouter.router.navigateTo(context, routeString);
+          }
         },
         child: Text(
           content,
