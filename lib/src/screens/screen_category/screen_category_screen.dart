@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ux_research/src/screens/home/localWidget/search_filter_slider.dart';
 
 import 'package:ux_research/src/utilities/index.dart';
 
@@ -13,9 +12,9 @@ class ScreenCategoryScreen extends StatefulWidget {
 class _ScreenCategoryScreenState extends State<ScreenCategoryScreen> {
   @override
   Widget build(BuildContext context) {
-    final currentRoute = ModalRoute.of(context)?.settings.name;
     final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+    // Drawer를 Manual하게 동작하게 하는 로직.
     void openDrawer() {
       _key.currentState!.openDrawer();
     }
@@ -30,12 +29,9 @@ class _ScreenCategoryScreenState extends State<ScreenCategoryScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 /* 스크린 제목 (Indicator Text) */
-
                 SearchFilterSlider(openDrawer),
-                Flexible(
-                  child: ScreenContents(
-                    imageList: imageList,
-                  ),
+                ScreenContents(
+                  imageList: imageList,
                 ),
               ],
             ),

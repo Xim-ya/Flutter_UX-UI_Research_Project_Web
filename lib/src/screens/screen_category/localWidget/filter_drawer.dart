@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 class FilterDrawer extends StatelessWidget {
@@ -29,14 +30,30 @@ class FilterDrawer extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: _.optionList.length,
                       itemBuilder: (context, index) => TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _.setToggleOption(_.optionList[index]);
+                        },
                         child: Container(
                           height: 56,
-                          child: Center(
-                              child: Text(
-                            _.optionList[index].title,
-                            style: TextStyle(color: Colors.red),
-                          )),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Text(
+                                  _.optionList[index].title,
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              _.selectedOptionList.contains(_.optionList[index])
+                                  ? Positioned(
+                                      top: 0,
+                                      bottom: 0,
+                                      right: 0,
+                                      child: SvgPicture.asset(
+                                          "icons/fixing_pin_ic.svg"),
+                                    )
+                                  : const SizedBox(),
+                            ],
+                          ),
                         ),
                       ),
                     );

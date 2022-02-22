@@ -14,9 +14,19 @@ class ScreenOptionModel {
     screenOptions = newArray;
   }
 
-  // 선택된 옵션 값들은 'selectedOptionList' 에서 관리함.
+  // 선택된 옵션 값들은 'selectedOptionList' 에서 관리함. (Toggle 로직)
   void setOption(ScreenOption item) {
     selectedScreenOptions.add(item);
+  }
+
+  void setToggleOption(ScreenOption item) {
+    if (selectedScreenOptions.contains(item)) {
+      // 이미 옵션이 선택되었다면 인자로 전달 받은 옵션을 리스트에서 제거
+      selectedScreenOptions.removeWhere((e) => e == item);
+    } else {
+      // 옵션이 선택되어 있지 않다면 전달 받은 옵션을 리스트에 추가
+      selectedScreenOptions.add(item);
+    }
   }
 }
 

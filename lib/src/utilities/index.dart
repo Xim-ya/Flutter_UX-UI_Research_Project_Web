@@ -13,6 +13,7 @@ export 'package:ux_research/src/utilities/data/screen_option_data.dart';
 export 'package:flutter_hooks/flutter_hooks.dart';
 export 'package:ux_research/src/utilities/fluro_router.dart';
 export 'package:ux_research/src/utilities/data/dummyData.dart';
+export 'package:ux_research/src/utilities/web_scroll_behavior.dart';
 
 // Widgets
 export 'package:ux_research/src/screens/home/home.dart';
@@ -30,7 +31,8 @@ export 'package:ux_research/src/screens/home/localWidget/app_cotents.dart';
 export 'package:ux_research/src/widgets/on_hover_content.dart';
 export 'package:ux_research/src/widgets/ui_content.dart';
 export 'package:ux_research/src/screens/home/localWidget/screen_contents.dart';
-export 'package:ux_research/src/screens/home/localWidget/filter_drawer.dart';
+export 'package:ux_research/src/screens/screen_category/localWidget/filter_drawer.dart';
+export 'package:ux_research/src/screens/screen_category/localWidget/search_filter_slider.dart';
 
 // Model & View Model
 export 'package:ux_research/src/model/screen_option_model.dart';

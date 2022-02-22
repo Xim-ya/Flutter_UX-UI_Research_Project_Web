@@ -8,12 +8,14 @@ class ScreenContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveGridList(
-        scroll: false,
-        desiredItemWidth: 225,
-        minSpacing: 24,
-        children: imageList.map((item) {
-          return UIContent(image: item, isExpanded: false);
-        }).toList());
+    return Flexible(
+      child: ResponsiveGridList(
+          scroll: false,
+          desiredItemWidth: 225,
+          minSpacing: 24,
+          children: imageList.map((item) {
+            return UIContent(image: item, isExpanded: false);
+          }).toList()),
+    );
   }
 }

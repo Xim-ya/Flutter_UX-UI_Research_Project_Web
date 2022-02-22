@@ -29,6 +29,12 @@ class ScreenOptionVM extends GetxController {
 
   void setOption(ScreenOption item) {
     newOption.setOption(item);
+    update();
+  }
+
+  void setToggleOption(ScreenOption item) {
+    newOption.setToggleOption(item);
+    update();
   }
 
   void filterListBasedOnType(int type) {

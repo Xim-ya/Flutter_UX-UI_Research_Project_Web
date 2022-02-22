@@ -22,9 +22,11 @@ class FRouter {
   });
 
   static void setupRouter() {
-    router.define('/', handler: homeHandler);
+    router.define('/',
+        handler: homeHandler, transitionType: TransitionType.fadeIn);
     router.define('/screen',
         handler: screenHandler, transitionType: TransitionType.fadeIn);
-    router.define('/temp', handler: tempHandler);
+    router.define('/temp',
+        handler: tempHandler, transitionType: TransitionType.fadeIn);
   }
 }

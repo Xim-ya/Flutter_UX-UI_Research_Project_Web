@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
-import 'localWidget/search_filter_slider.dart';
-
 /* Home Screen 반응형 레이아웃 빌더 */
 class HomeScreen extends HookWidget {
   HomeScreen({Key? key}) : super(key: key);

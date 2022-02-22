@@ -12,9 +12,11 @@ class SearchFilterSlider extends StatelessWidget {
     return GetBuilder<ScreenOptionVM>(
         init: optionController,
         builder: (_) {
-          return SizedBox(
+          return Container(
             height: 34,
+            width: double.infinity,
             child: ListView.builder(
+                // padding: EdgeInsets.only(left: 38),
                 scrollDirection: Axis.horizontal,
                 // 옵션 리스트 중 'selected' 프로퍼티가 true boolean 값을 가지고 있는 인스턴스만 리턴
                 itemCount: _.selectedOptionList.isEmpty

@@ -1,8 +1,5 @@
-import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:ux_research/src/screens/temp_screen.dart';
 import 'package:ux_research/src/utilities/index.dart';
 import 'package:flutter/material.dart';
-import 'package:ux_research/src/utilities/fluro_router.dart';
 
 void main() {
   FRouter.setupRouter();
@@ -14,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      scrollBehavior: WebScrollBehavior(), // 수평 스크롤 동작을 감지함.
       debugShowCheckedModeBanner: false,
       title: 'UX UI RESEARCH',
       theme: ThemeData(fontFamily: 'SpoqaHanSansNeo'),
