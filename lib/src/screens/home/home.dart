@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ux_research/src/utilities/constants.dart';
+import 'package:ux_research/src/utilities/data/screenshots_data.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 /* Home Screen 반응형 레이아웃 빌더 */
@@ -33,18 +35,7 @@ class HomeScreen extends HookWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              /* 'App' <---> 'Screen' 옵션 토글 버튼 리스트 (곧 삭제) */
-              // MainOptionButtons(isBasicOption: _isBasicOption),
-              /* 'Screen' Category 옵션 리스트 */
-              // SearchFilterSlider(openDrawer),
-              /* 임시 주석 처리 */
-              // Flexible(
-              //    child: ScreenContents(
-              //      imageList: imageList,
-              //    ),
-              //  )
-              // 'Screen' 옵션이 선택 되었을 시,
-              AppContents(company: company, category: category, name: name),
+              AppContents(screenShots: screenShots, apps: apps),
               /* ************** */
             ],
           ),
@@ -53,3 +44,17 @@ class HomeScreen extends HookWidget {
     );
   }
 }
+
+/* 'App' <---> 'Screen' 옵션 토글 버튼 리스트 (곧 삭제) */
+// MainOptionButtons(isBasicOption: _isBasicOption),
+/* 'Screen' Category 옵션 리스트 */
+// SearchFilterSlider(openDrawer),
+/* 임시 주석 처리 */
+// Flexible(
+//    child: ScreenContents(
+//      imageList: imageList,
+//    ),
+//  )
+// Textfield is not go as happening;;
+
+// 'Screen' 옵션이 선택 되었을 시,

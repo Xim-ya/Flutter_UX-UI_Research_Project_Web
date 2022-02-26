@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ux_research/src/utilities/data/screenshots_data.dart';
 import 'package:ux_research/src/utilities/index.dart';
 import 'package:ux_research/src/widgets/on_hover_content.dart';
 
@@ -15,12 +16,14 @@ class ThumbnailList extends StatelessWidget {
     'images/tada_ride_05.png'
   ];
 
+  static List<ScreenShot> screenList = screenShots.take(5).toList();
+
   // Horizontal List 위젯
-  Widget contentUItList(List<String> contents) => Row(
+  Widget contentUItList(List<ScreenShot> screenList) => Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: contents
+      children: screenList
           .map((item) => UIContent(
-                image: item,
+                image: "assets/images/screenshot/" + item.imagePath,
                 isExpanded: true,
               ))
           .toList());
@@ -28,7 +31,7 @@ class ThumbnailList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: contentUItList(imageList),
+      child: contentUItList(screenList),
     );
   }
 }

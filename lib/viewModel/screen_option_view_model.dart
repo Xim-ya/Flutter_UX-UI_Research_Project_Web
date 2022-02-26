@@ -1,6 +1,7 @@
 import 'package:ux_research/src/utilities/index.dart';
 
 class ScreenOptionVM extends GetxController {
+  bool isEnglish = true;
   ScreenOptionModel newOption;
 
   ScreenOptionVM({required ScreenOptionModel option})
@@ -17,11 +18,11 @@ class ScreenOptionVM extends GetxController {
   String get selectedType {
     switch (newOption.selectedType) {
       case 0:
-        return "옵션1";
+        return "Category";
       case 1:
-        return "옵션2";
+        return "Pattern";
       case 2:
-        return "옵션3";
+        return "Element";
       default:
         return "선택되지 않음";
     }
@@ -39,6 +40,11 @@ class ScreenOptionVM extends GetxController {
 
   void filterListBasedOnType(int type) {
     newOption.filterListBasedOnType(type);
+    update();
+  }
+
+  void toggleLanguage() {
+    isEnglish = !isEnglish;
     update();
   }
 }

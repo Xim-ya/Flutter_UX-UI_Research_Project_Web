@@ -5,7 +5,7 @@ import 'package:ux_research/src/utilities/index.dart';
 class FilterDrawer extends StatelessWidget {
   FilterDrawer({Key? key}) : super(key: key);
 
-  final optionController =
+  final c =
       Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
 
   @override
@@ -21,40 +21,50 @@ class FilterDrawer extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               GetBuilder<ScreenOptionVM>(
-                  init: ScreenOptionVM(option: ScreenOptionModel()),
-                  builder: (_) {
+                  init: c,
+                  builder: (context) {
                     return ListView.builder(
                       padding: EdgeInsets.only(top: 62),
                       shrinkWrap: true,
-                      itemCount: _.optionList.length,
-                      itemBuilder: (context, index) => TextButton(
-                        onPressed: () {
-                          _.setToggleOption(_.optionList[index]);
-                        },
-                        child: Container(
-                          height: 56,
-                          child: Stack(
-                            children: [
-                              Center(
-                                child: Text(
-                                  _.optionList[index].title,
-                                  style: TextStyle(color: Colors.black),
+                      itemCount: c.optionList.length,
+                      itemBuilder: (context, index) {
+                        /* 선택된 언어 여부에 따라 다른 값을 호출 */
+                        var optionsBasedOnLanguage = c.isEnglish
+                            ? c.optionList[index].title.keys
+                            : c.optionList[index].title.values;
+                        return TextButton(
+                          onPressed: () {
+                            c.setToggleOption(c.optionList[index]);
+                          },
+                          child: Container(
+                            height: 56,
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: Text(
+                                    optionsBasedOnLanguage
+                                        .toString()
+                                        .replaceAll("(", "")
+                                        .replaceAll(")", ""),
+                                    style: TextStyle(color: Colors.black),
+                                  ),
                                 ),
-                              ),
-                              _.selectedOptionList.contains(_.optionList[index])
-                                  // 옵션이 선택되었다면 아이콘 위젯을 보여줌.
-                                  ? Positioned(
-                                      top: 0,
-                                      bottom: 0,
-                                      right: 0,
-                                      child: SvgPicture.asset(
-                                          "icons/fixing_pin_ic.svg"),
-                                    )
-                                  : const SizedBox(),
-                            ],
+                                c.selectedOptionList
+                                        .contains(c.optionList[index])
+                                    // 옵션이 선택되었다면 아이콘 위젯을 보여줌.
+                                    ? Positioned(
+                                        top: 0,
+                                        bottom: 0,
+                                        right: 0,
+                                        child: SvgPicture.asset(
+                                            "icons/fixing_pin_ic.svg"),
+                                      )
+                                    : const SizedBox(),
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     );
                   }),
               listHeader(),
@@ -76,12 +86,12 @@ class FilterDrawer extends StatelessWidget {
         ),
       ),
       child: GetBuilder<ScreenOptionVM>(
-          init: optionController,
-          builder: (_) {
+          init: c,
+          builder: (context) {
             return Center(
                 child: Text.rich(TextSpan(children: <TextSpan>[
               TextSpan(
-                  text: _.selectedType,
+                  text: c.selectedType,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               TextSpan(
                   text: " 옵션",
@@ -98,12 +108,64 @@ class FilterDrawer extends StatelessWidget {
           border:
               Border(right: BorderSide(width: 1, color: kDrawerBorderColor))),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          leadingBannerButton(),
-          bannerDivier(),
-          filterButton("icons/pattern_big_ic.svg", 0, "pattern"),
-          filterButton("icons/element_big_ic.svg", 1, "element"),
-          filterButton("icons/category_big_ic.svg", 2, "category"),
+          Column(
+            children: [
+              leadingBannerButton(),
+              bannerDivier(),
+              filterButton("icons/pattern_big_ic.svg", 0, "pattern"),
+              filterButton("icons/element_big_ic.svg", 1, "element"),
+              filterButton("icons/category_big_ic.svg", 2, "category"),
+            ],
+          ),
+          languageButton(),
+        ],
+      ),
+    );
+  }
+
+  Container languageButton() {
+    return Container(
+      width: 56,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          /* Outlined Button , with SVG */
+          GetBuilder<ScreenOptionVM>(
+              init: c,
+              builder: (_) {
+                return InkWell(
+                  borderRadius: BorderRadius.circular(8),
+                  onTap: () {
+                    c.toggleLanguage();
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    height: 36,
+                    width: 36,
+                    decoration: BoxDecoration(
+                      color: kDarkGrey,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: SvgPicture.asset(
+                      "icons/global_ic.svg",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              }),
+          /* Button Title */
+          Padding(
+            padding: const EdgeInsets.only(top: 4, bottom: 12),
+            child: Text(
+              "언어변경",
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.black),
+            ),
+          ),
         ],
       ),
     );
@@ -142,7 +204,7 @@ class FilterDrawer extends StatelessWidget {
         children: [
           /* Outlined Button , with SVG */
           GetBuilder<ScreenOptionVM>(
-              init: optionController,
+              init: c,
               builder: (_) {
                 return InkWell(
                   borderRadius: BorderRadius.circular(8),

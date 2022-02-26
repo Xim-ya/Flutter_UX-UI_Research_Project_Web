@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ux_research/src/utilities/constants.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 class SelectOptionSlider extends StatelessWidget {
   SelectOptionSlider(this.openDrawer, {Key? key}) : super(key: key);
   final openDrawer;
-  final optionController =
+  final c =
       Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ScreenOptionVM>(
-        init: optionController,
+        init: c,
         builder: (_) {
           return Container(
             height: 50,
@@ -54,7 +53,10 @@ class SelectOptionSlider extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 8, right: 6),
                               child: Text(
-                                item.title,
+                                item.title.keys
+                                    .toString()
+                                    .replaceAll("(", "")
+                                    .replaceAll(")", ""),
                                 style: TextStyle(
                                     color: kDarkGrey,
                                     fontSize: 12,
