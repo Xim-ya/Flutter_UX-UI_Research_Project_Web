@@ -11,24 +11,26 @@ class SelectOptionSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ScreenOptionVM>(
         init: c,
-        builder: (_) {
+        builder: (context) {
           return Container(
             height: 50,
             child: Container(
               alignment: Alignment.center,
               height: 34,
               child: ListView.separated(
-                  padding: EdgeInsets.only(left: 38, top: 8, bottom: 8),
+                  padding: const EdgeInsets.only(left: 38, top: 8, bottom: 8),
                   scrollDirection: Axis.horizontal,
                   // 옵션 리스트 중 'selected' 프로퍼티가 true boolean 값을 가지고 있는 인스턴스만 리턴
-                  itemCount: 1 + _.selectedOptionList.length,
+                  itemCount: 1 + c.selectedOptionList.length,
                   itemBuilder: (ctx, index) {
                     if (index == 0) {
                       // 헤더 값 반환
                       return addCategoryButton();
                     }
                     index -= 1;
-                    var item = _.selectedOptionList[index];
+                    var item = c.selectedOptionList[index];
+                    var optionsBasedOnLanguage =
+                        c.isEnglish ? item.title.keys : item.title.values;
                     return Container(
                         height: _squareSize,
                         decoration: BoxDecoration(
@@ -53,7 +55,7 @@ class SelectOptionSlider extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 8, right: 6),
                               child: Text(
-                                item.title.keys
+                                optionsBasedOnLanguage
                                     .toString()
                                     .replaceAll("(", "")
                                     .replaceAll(")", ""),
@@ -65,7 +67,7 @@ class SelectOptionSlider extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                _.setToggleOption(item); // 옵션 삭제 로직
+                                c.setToggleOption(item); // 옵션 삭제 로직
                               },
                               child: SvgPicture.asset(
                                 "icons/close_circle_ic.svg",

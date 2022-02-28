@@ -19,19 +19,29 @@ class ThumbnailList extends StatelessWidget {
   static List<ScreenShot> screenList = screenShots.take(5).toList();
 
   // Horizontal List 위젯
-  Widget contentUItList(List<ScreenShot> screenList) => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: screenList
-          .map((item) => UIContent(
-                image: "assets/images/screenshot/" + item.imagePath,
-                isExpanded: true,
-              ))
-          .toList());
+  // Widget contentUItList(List<ScreenShot> screenList) => Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: screenList
+  //         .map((item) => UIContent(
+  //               image: "assets/images/screenshot/" + item.imagePath,
+  //               isExpanded: true,
+  //             ))
+  //         .toList());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: contentUItList(screenList),
-    );
+        // child: contentUItList(screenList),
+        );
   }
 }
+
+// Horizontal List 위젯
+// Widget contentUItList(List<ScreenShot> screenList) => Row(
+//     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//     children: screenList
+//         .map((item) => UIContent(
+//       image: "assets/images/screenshot/" + item.imagePath,
+//       isExpanded: true,
+//     ))
+//         .toList());

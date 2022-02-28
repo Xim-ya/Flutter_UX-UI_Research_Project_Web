@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ux_research/src/utilities/data/screenshots_data.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 /* 홈스크린에서 사용되는 어플리케이션 캡쳐 스크린(UI Content) */
 class UIContent extends StatelessWidget {
-  const UIContent({
-    Key? key,
-    required this.image,
-    required this.isExpanded,
-  }) : super(key: key);
+  const UIContent(
+      {Key? key, required this.screenShot, required this.isExpanded})
+      : super(key: key);
 
-  final String image; // 아이템 데이터, 이미지에서 오브젝트 데이터 형태로 구성되어야 함.
+  final ScreenShot screenShot;
   final bool isExpanded; // Expand한 위젯 유무
 
   @override
@@ -38,7 +37,8 @@ class UIContent extends StatelessWidget {
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(_contentRadius),
                   child: Image(
-                    image: AssetImage(image),
+                    image: AssetImage(
+                        "assets/images/screenshot/" + screenShot.imagePath),
                   ))),
         )
       ]),
@@ -64,7 +64,8 @@ class UIContent extends StatelessWidget {
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(_contentRadius),
                 child: Image(
-                  image: AssetImage(image),
+                  image: AssetImage(
+                      "assets/images/screenshot/" + screenShot.imagePath),
                 ))),
       )
     ]);

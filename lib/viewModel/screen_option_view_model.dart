@@ -15,6 +15,7 @@ class ScreenOptionVM extends GetxController {
     return newOption.selectedScreenOptions;
   }
 
+  /* Drawer 상단에 보여지는 Title text */
   String get selectedType {
     switch (newOption.selectedType) {
       case 0:
@@ -24,7 +25,7 @@ class ScreenOptionVM extends GetxController {
       case 2:
         return "Element";
       default:
-        return "선택되지 않음";
+        return "ALL";
     }
   }
 
@@ -40,6 +41,12 @@ class ScreenOptionVM extends GetxController {
 
   void filterListBasedOnType(int type) {
     newOption.filterListBasedOnType(type);
+    update();
+  }
+
+  void fetchAllList() {
+    newOption.fetchAllList();
+    print("fetch all list");
     update();
   }
 

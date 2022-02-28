@@ -72,6 +72,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/images/screenshot/tada/
+    - assets/images/screenshot/coupang/
 #   - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
