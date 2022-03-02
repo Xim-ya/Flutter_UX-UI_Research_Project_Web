@@ -5,13 +5,12 @@ import 'package:ux_research/src/utilities/index.dart';
 class FilterDrawer extends StatelessWidget {
   FilterDrawer({Key? key}) : super(key: key);
 
-  final vm =
-      Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
+  final vm = Get.put(ScreenVM(option: ScreenModel())); // View Model 연동
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: GetBuilder<ScreenOptionVM>(
+        child: GetBuilder<ScreenVM>(
             init: vm,
             builder: (context) {
               return Row(
@@ -185,7 +184,7 @@ class FilterDrawer extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
         onTap: () {
-          vm.newOption.fetchAllList();
+          vm.model.fetchAllOption();
         },
         child: Container(
           child: Container(

@@ -4,12 +4,11 @@ import 'package:ux_research/src/utilities/index.dart';
 class SelectOptionSlider extends StatelessWidget {
   SelectOptionSlider(this.openDrawer, {Key? key}) : super(key: key);
   final openDrawer;
-  final c =
-      Get.put(ScreenOptionVM(option: ScreenOptionModel())); // View Model 연동
+  final c = Get.put(ScreenVM(option: ScreenModel())); // View Model 연동
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ScreenOptionVM>(
+    return GetBuilder<ScreenVM>(
         init: c,
         builder: (context) {
           return Container(

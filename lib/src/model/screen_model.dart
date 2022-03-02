@@ -1,20 +1,35 @@
-import 'package:ux_research/src/utilities/data/screenshots_data.dart';
 import 'package:ux_research/src/utilities/index.dart';
 
 // 모든 스크린 옵션들의 데이터와 비즈니스 로직들을 관리
-class ScreenOptionModel {
+class ScreenModel {
   /* ScreenShot 옵션 값 */
   List<ScreenOption> screenOptions = screenOptionList;
   List<ScreenOption> selectedScreenOptions = [];
   int selectedType = 0;
 
   /* ScreenShot 값 */
-  List<ScreenShot> screenshotList = screenShots..shuffle();
+  List<ScreenShot> screenshotList = [];
 
-  /* 선택된 스크린샷 옵션 값들을 기준으로 스크린샷 아이템들을 호출 */
+  /**** 1) Screenshots 비즈니스 로직 ****/
+
+  List<String> selectedOption = ["2slider", "2tabBar"];
+
+  // 선택된 스크린샷 옵션 값들을 기준으로 스크린샷 아이템들을 호출
   void fetchScreenshots() {
-    print("스크린샷 아이템 호출");
+    List<ScreenShot> filteredList = <ScreenShot>[];
+
+    print("Filtered Options FIXED5 ${filteredList.length}");
+
+    // List<int> list = <int>[];
+    // if (list.contains(1)) print('someFunction4'); // OK
   }
+
+  // 스크린샷 리스트들을 무작위 섞는 로직
+  void shuffleScreenshotsList() {
+    screenshotList = screenShots..shuffle();
+  }
+
+  /**** 2) Screen Option 비즈니스 로직 ****/
 
   // 선택된 타입을 기준으로 스크린 옵션값들은 재정의하는 동작
   void filterListBasedOnType(int type) {
@@ -25,7 +40,7 @@ class ScreenOptionModel {
   }
 
   // 모든 스크린 옵션 값들을 호출
-  void fetchAllList() {
+  void fetchAllOption() {
     screenOptions = screenOptionList;
   }
 
@@ -45,13 +60,9 @@ class ScreenOptionModel {
   }
 }
 
-/* <ScreenOption> 모델 타입 */
-class ScreenOption {
-  Map<String, String> title;
-  int type;
+class TempItem {
+  List<String> options;
+  List<String> key;
 
-  ScreenOption(
-    this.title,
-    this.type,
-  );
+  TempItem(this.options, this.key);
 }

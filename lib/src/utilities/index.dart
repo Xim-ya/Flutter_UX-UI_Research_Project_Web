@@ -14,6 +14,8 @@ export 'package:flutter_hooks/flutter_hooks.dart';
 export 'package:ux_research/src/utilities/fluro_router.dart';
 export 'package:ux_research/src/utilities/data/dummyData.dart';
 export 'package:ux_research/src/utilities/web_scroll_behavior.dart';
+export 'package:ux_research/src/utilities/data/screenshots_data.dart';
+export 'package:ux_research/src/utilities/data/screenshots_data.dart';
 
 // Widgets
 export 'package:ux_research/src/screens/home/home.dart';
@@ -35,8 +37,8 @@ export 'package:ux_research/src/screens/screen_category/localWidget/filter_drawe
 export 'package:ux_research/src/screens/screen_category/localWidget/select_option_slider.dart';
 
 // Model & View Model
-export 'package:ux_research/src/model/screen_option_model.dart';
-export 'package:ux_research/viewModel/screen_option_view_model.dart';
+export 'package:ux_research/src/model/screen_model.dart';
+export 'package:ux_research/src/viewModel/screen_view_model.dart';
 
 // Screens
 export 'package:ux_research/src/screens/screen_category/screen_category_screen.dart';
